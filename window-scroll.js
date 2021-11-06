@@ -4,6 +4,7 @@ export default function useWindowScroll() {
   const [ scroll, setScroll ] = useState(0)
 
   useEffect(() => {
+    handleScroll()
     window.addEventListener('scroll', onScroll)
     // window.addEventListener('wheel', onScroll)
 
