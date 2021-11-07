@@ -3,7 +3,7 @@ import { useEffect, useState } from "react"
 export default function useKeyPress(targetKey, conbineKey, ignoreKeys = [], disableOnInput = true) {
   const nodes = ['INPUT', 'TEXTAREA']
   const [keyPressed, setKeyPressed] = useState(false)
-  function downHandler({ key, metaKey, ctrlKey, altKey }) {
+  function downHandler({ target, key, metaKey, ctrlKey, altKey }) {
     if (
       (disableOnInput && nodes.includes(target.nodeName))  // disable on input
       || (ignoreKeys.includes('meta') && metaKey)
