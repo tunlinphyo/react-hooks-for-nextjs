@@ -10,9 +10,9 @@ export default function useKeyPress(targetKey, conbineKey, ignoreKeys = [], disa
       || (ignoreKeys.includes('ctrl') && ctrlKey)
       || (ignoreKeys.includes('alt') && altKey)
     ) return
-    if (!conbineKey && key === targetKey) setKeyPressed(true)
     if (
-      (metaKey && conbineKey === 'meta' && key === targetKey)
+      (!conbineKey && key === targetKey)
+      || (metaKey && conbineKey === 'meta' && key === targetKey)
       || (ctrlKey && conbineKey === 'ctrl' && key === targetKey)
       || (altKey && conbineKey === 'alt' && key === targetKey)
     ) setKeyPressed(true)
