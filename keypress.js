@@ -4,9 +4,9 @@ export default function useKeyPress(targetKey, conbineKey, ignoreKeys = [], disa
   const nodes = ['INPUT', 'TEXTAREA']
   const [keyPressed, setKeyPressed] = useState(false)
   function downHandler({ key, metaKey, ctrlKey, altKey }) {
-    if (disableOnInput && nodes.includes(target.nodeName)) return // disable on input
     if (
-      (ignoreKeys.includes('meta') && metaKey)
+      (disableOnInput && nodes.includes(target.nodeName))  // disable on input
+      || (ignoreKeys.includes('meta') && metaKey)
       || (ignoreKeys.includes('ctrl') && ctrlKey)
       || (ignoreKeys.includes('alt') && altKey)
     ) return
