@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 
-export default function useKeyPress(targetKey, conbineKey, ignoreKeys) {
+export default function useKeyPress(targetKey, conbineKey, ignoreKeys = []) {
   const [keyPressed, setKeyPressed] = useState(false)
   function downHandler({ key, metaKey, ctrlKey, altKey }) {
     if (
