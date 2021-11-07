@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 
 export default function useWindowScroll() {
-  const [ scroll, setScroll ] = useState(0)
+  const [ scroll, setScroll ] = useState({ x: 0, y: 0})
 
   useEffect(() => {
     handleScroll()
@@ -18,8 +18,8 @@ export default function useWindowScroll() {
     requestAnimationFrame(handleScroll)
   }
   function handleScroll() {
-    setScroll(window.scrollY)
+    setScroll({ x: window.scrollX, y: window.scrollY })
   }
 
-  return { scroll }
+  return scroll
 }
