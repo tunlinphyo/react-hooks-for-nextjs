@@ -1,23 +1,23 @@
 import { useEffect, useState } from "react"
 
-export default function useSearchParams(query) {
-  const [searchParams, setSearchParams] = useState(query)
+export default function useSearchParams(defaultParams, params) {
+  const [searchParams, setSearchParams] = useState({...defaultParams, ...params})
 
   useEffect(() => {
-    setSearchParams(query)
-  }, [query])
+    setSearchParams({...defaultParams, ...params})
+  }, [params])
  
-  function getSearchParams(query) {
-    const newQuery = {}
-    Object.entries(query).forEach(([key, value]) => {
-      if (Array.isArray(value) ? value.length : value) newQuery[key] = value
+  function toQueryString(params) {
+    const newParams = {}
+    Object.entries(params).forEach(([key, value]) => {
+      if (Array.isArray(value) ? value.length : value) newParams[key] = value
     })
-    const searchParams = new URLSearchParams(newQuery)
+    const searchParams = new URLSearchParams(newParams)
     return searchParams.toString()
   }
-
+  
   return {
     searchParams,
-    getSearchParams
+    toQueryString
   }
 }
