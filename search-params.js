@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 
-export default function useSearchParams(query, callback) {
+export default function useSearchParams(query) {
   const [searchParams, setSearchParams] = useState(query)
 
   useEffect(() => {
